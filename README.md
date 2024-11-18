@@ -27,9 +27,8 @@
   * [Discord Servers](#discord-servers)
     
 # Bluesky Guide
-Collection of Tips &amp; Tools for collaborating on [Bluesky](https://bsky.app) shared by [Jeftek.com](https://bsky.app/profile/jeftek.com)
-
-**Shortlink:** [https://teklink.io/BlueskyGuide](https://teklink.io/BlueskyGuide) - Easier to share!
+Collection of Tips &amp; Tools for collaborating on [Bluesky](https://bsky.app) 
+- amended from the version by [Jeftek.com](https://bsky.app/profile/jeftek.com)
 
 # Tips
 ## Account Security
@@ -110,15 +109,24 @@ A collection of custom labelers that enabling labeling posts and profiles which 
 Alternative clients for engaging on the Bluesky platform
 
 ## Web
-- [Blue Deck](https://deck.blue) - The multi-column layout for engaging on Bluesky
+- [Skyfeed](https://skyfeed.app/) - especially useful for feed management
+  * [Github repo](https://github.com/skyfeed-dev/app)
+- [Blue Deck](https://deck.blue) - multi-column layout
+- [TOKIMEKI](https://tokimeki.blue/login)
+  * [Github repo](https://github.com/spuithori/tokimekibluesky)
 
 ## IOS/IpadOS
 - [Skeets App](https://www.skeetsapp.com) - Mobile Bluesky client from [SkeetsApp.com](https://bsky.app/profile/skeetsapp.com)
 - [Graysky](https://graysky.app/) - A mobile client for engaging on Bluesky for IOS and Android
+  * [Github repo](https://github.com/mozzius/graysky)
 
 ## Android
 - [Graysky](https://graysky.app/) - A mobile client for engaging on Bluesky for IOS and Android
-
+  * [Github repo](https://github.com/mozzius/graysky)
+ 
+## MacOS
+- [Sky.app (Github repo)](https://github.com/jcsalterego/Sky.app)
+- [SwiftSky (Github repo)](https://github.com/rmcan/swiftsky) (quite rudimentary atm)
 
 # Integration with other social media services
 
@@ -154,7 +162,6 @@ Tools for removing, pruning your social media services posts and followers
 - [Bluesky API Touchers](https://discord.gg/FS9U8A7F)
 - [Bluesky Community Services](https://discord.gg/tYuDvuzbVA)
 - [AT Protocol PDS Admins](discord.gg/eT6RWzy) - AT Protocol PDS Admins
-
 
 
 
