@@ -43,6 +43,7 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 - [Clearsky](https://clearsky.app) (block lists, feed inclusion, history)
 - [Atmosphere Stats](https://jyc.dev/at) (engagement metrics)
 - [User Count](https://bsky-users.theo.io/) (platform statistics)
+- [User Count and growth rate](https://bcounter.nat.vg/)
 
 ### Network Tools
 - [Aurora](https://aurora.ndimensional.xyz/) (network visualization)
