@@ -1,6 +1,7 @@
 # 🌐 Comprehensive Bluesky Guide
 
 > A curated collection of tips, tools, and resources for [Bluesky](https://bsky.app)
+Other collections (some outdated) include: [awesome bluesky](https://github.com/notjuliet/awesome-bluesky)
 
 ## 🔐 Security & Setup
 
