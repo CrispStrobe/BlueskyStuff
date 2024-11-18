@@ -50,8 +50,7 @@ When you first join, and are not following people Bluesky can be a lonely space.
 - [A great list tips on blocking and moderation from @francesmeh.reviews](https://bsky.app/profile/francesmeh.reviews/post/3lamkrhv6k22o)
 
 ### Starter Packs
-One of the best feastures they added were Starter Packs, which are curated collections of accounts you can review to follow or follow them all at once. You can find these all over Bluesky, but take a look at a persons profile under "Starter Packs" and see if they have published one of their own you can follow on a topic.
-- You can see the starter packs I publish on my profile here [Jeftek.com/](https://bsky.app/profile/jeftek.com)
+Starter Packs are curated collections of accounts you can review to follow or follow them all at once. 
 
 ### Custom Feeds
 You see content based on who you follow, but you also can subscribe to custom feeds that people create on a whole variety of topics.   You can then choose to pin these to your home feed and switch between them like channels.  This allows you to choose not to follow accounts, but subscribe to feeds which may include those accounts so you can switch your viewing almost like channels.
@@ -70,6 +69,7 @@ You can find many of these also on the official Bluesky docs in their showcase o
 ## Analytics
 Tools to give you insights into activity and engagement on Bluesky
 
+- [User Count](https://bsky-users.theo.io/)
 - [Blue View](https://blueview.app) - Used to track analytics about a Bluesky profile such as followers, engagement, etc.
 - [Clearsky](https://clearsky.app) - View the activity on Bluesky, and specific profiles to see what lists, blocks, and history of a profile
   * See who blocks a profile
@@ -88,10 +88,10 @@ Tools for creating and curating custom feeds that you can share on your Bluesky 
 - [📌 to Bookmark](https://bsky.app/profile/did:plc:q6gjnaw2blty4crticxkmujt/feed/my-pins) - Bluesky currently doesn't have native Bookmarks, but you can reply to a post with a 📌 (pin) emoji, and it will show up in this custom feed for you go back to later
 
 ## Starter Packs
-When you first join Bluesky it can feel empty, but that is because you may not have discovered content to follow.  The Starter Packs feature allows people to curate and publish collections of accounts around a specific topic or theme.  You can choose to view the list to follow all of them or follow some of them, and start building your timeline.
+When you first join Bluesky it can feel empty, but that is because you may not have discovered content to follow. The Starter Packs feature allows people to curate and publish collections of accounts around a specific topic or theme.  You can choose to view the list to follow all of them or follow some of them, and start building your timeline.
 ## Useful Starter Packs
+ - [BlueSkyDirectory](https://blueskydirectory.com/starter-packs/all) - comprehensive searchable index
  - [Skypacks Collections](https://bsky.app/profile/skypacks.bsky.social) - Skypacks publishes useful starter packs for people to discovery from all sorts of topics.
-
 
 ## Content Importers
 Tools for importing content from other platforms to your Bluesky timeline
@@ -146,7 +146,6 @@ These allow you to post content and monitor analytics across social media networ
 ### Aggregation Tools
 - [OpenVibe](https://apps.apple.com/us/app/openvibe-mastodon-bluesky/id1666230916) - IOS App to post and consume feeds across Bluesky, Mastodon, and Nostr social media networks in one mobile interface  
 
-
 # Social Media Cleanup
 Tools for removing, pruning your social media services posts and followers
 
@@ -156,13 +155,11 @@ Tools for removing, pruning your social media services posts and followers
 
 ## Directories
 - [Bluesky Directory](https://blueskydirectory.com) - A collection of profiles, applications and tools related to Bluesky
-- [Bluesky.ms](https://bluesky.ms) - A directory of people around the Microsoft community on Bluesky including Microsoft FTEs, MVPs, and others by [Merill](https://bsky.app/profile/merill.net)
 
 ## Discord Servers
 - [Bluesky API Touchers](https://discord.gg/FS9U8A7F)
 - [Bluesky Community Services](https://discord.gg/tYuDvuzbVA)
 - [AT Protocol PDS Admins](discord.gg/eT6RWzy) - AT Protocol PDS Admins
-
 
 
 ---------
