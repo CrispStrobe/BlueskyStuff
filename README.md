@@ -1,7 +1,6 @@
 # 🌐 Comprehensive Bluesky Guide
 
-> A curated collection of tips, tools, and resources for [Bluesky](https://bsky.app)  
-> Adapted from [Jeftek.com](https://bsky.app/profile/jeftek.com)
+> A curated collection of tips, tools, and resources for [Bluesky](https://bsky.app)
 
 ## 🔐 Security & Setup
 
@@ -69,9 +68,11 @@
 **iOS/iPadOS:**
 - [Skeets App](https://www.skeetsapp.com) (native iOS experience)
 - [Graysky](https://graysky.app/) (modern interface) - [GitHub](https://github.com/mozzius/graysky)
-
+- [OpenVibe](https://apps.apple.com/us/app/openvibe-mastodon-bluesky/id1666230916) (includes Mastodon, BlueSky, Threads)
+ 
 **Android:**
 - [Graysky](https://graysky.app/) (native Android design) - [GitHub](https://github.com/mozzius/graysky)
+- [OpenVibe](https://apps.apple.com/us/app/openvibe-mastodon-bluesky/id1666230916) (includes Mastodon, BlueSky, Threads)
 
 ### Desktop
 - [Sky.app](https://github.com/jcsalterego/Sky.app) (native macOS)
@@ -81,7 +82,7 @@
 ## 🔄 Cross-Platform Integration
 
 ### Bridges & Tools
-- [Bridgy Fed](https://fed.brid.gy/) (Fediverse connection)
+- [Bridgy Fed](https://fed.brid.gy/) (Fediverse connection: automatic crossposting from/to Mastodon, etc)
 - [Buffer](https://buffer.com) (multi-platform scheduling)
 - [Croissant](https://apps.apple.com/us/app/croissant-cross-posting/id6670288979) (iOS cross-posting)
 - [fedica](https://fedica.com/) (publishing, analytics)
@@ -93,7 +94,7 @@
 ## 🌟 Community Resources
 
 ### Directories
-- [Bluesky Directory](https://blueskydirectory.com) (tools, apps, users)
+- [Bluesky Directory](https://blueskydirectory.com) (tools, apps, users, starter packs)
 
 ### Discord
 - [Bluesky API Touchers](https://discord.gg/FS9U8A7F) (developers)
@@ -102,4 +103,4 @@
 
 ---
 
-> **Disclaimer:** Community-maintained guide, not officially associated with Bluesky. Use third-party tools at your own risk. Enable MFA!
+> **Disclaimer:** This list is not associated with Bluesky. Originally adapted from [Jeftek.com](https://bsky.app/profile/jeftek.com). Use third-party tools at your own risk. Enable MFA!
