@@ -55,7 +55,6 @@ Starter Packs are curated collections of accounts you can review to follow or fo
 ### Custom Feeds
 You see content based on who you follow, but you also can subscribe to custom feeds that people create on a whole variety of topics.   You can then choose to pin these to your home feed and switch between them like channels.  This allows you to choose not to follow accounts, but subscribe to feeds which may include those accounts so you can switch your viewing almost like channels.
 Like Starter Packs, people can choose to create custom feeds they publish on their Bluesky profile, so if you find someone interesting you follow check out their profile and see if they are publishing any.  
-- You can see the custom feeds I publish on my profile here [Jeftek.com/](https://bsky.app/profile/jeftek.com)
 
 ## Content Optimization
 Your timeline is initially filled with who you follow, but you don't have to follow everyone to see their content.  You may choose to limit who follow, but instead add them to your personal lists that you can switch to to see posters in that lists topic.  You can easily pin lists to your home page and switch between them for different feeds or channels of related content. Combining this with public feeds, you can keep your main following optimized and have different channels to swap to from your main timeline view.  
@@ -65,6 +64,7 @@ Your timeline is initially filled with who you follow, but you don't have to fol
 A collection of useful tools for extending the collaboration experience on Bluesky
 
 You can find many of these also on the official Bluesky docs in their showcase of projects built on the Bluesky API at [Bluesky Showcase](docs.bsky.app/showcase)
+Other collections (some outdated) include: [awesome bluesky](https://github.com/notjuliet/awesome-bluesky)
 
 ## Analytics
 Tools to give you insights into activity and engagement on Bluesky
@@ -127,6 +127,9 @@ Alternative clients for engaging on the Bluesky platform
 ## MacOS
 - [Sky.app (Github repo)](https://github.com/jcsalterego/Sky.app)
 - [SwiftSky (Github repo)](https://github.com/rmcan/swiftsky) (quite rudimentary atm)
+
+## CommandLine
+- [mattn/bsky (Github repo](https://github.com/mattn/bsky)
 
 # Integration with other social media services
 
