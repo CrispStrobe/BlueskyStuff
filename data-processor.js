@@ -18,6 +18,101 @@ const logger = winston.createLogger({
     ],
 });
 
+class BlueSkyRateLimiter {
+    constructor() {
+        // Overall rate limit: 3000 requests per 5 minutes
+        this.requestWindow = 5 * 60 * 1000; // 5 minutes in milliseconds
+        this.maxRequests = 3000;
+        
+        // Keep track of requests with timestamps
+        this.requests = [];
+        
+        // Add safety margin to stay well below limits
+        this.safetyFactor = 0.8; // Use 80% of max rate
+        
+        // Exponential backoff settings
+        this.initialBackoff = 1000; // Start with 1 second
+        this.maxBackoff = 60000;    // Max 1 minute
+        this.currentBackoff = this.initialBackoff;
+        
+        // Counter for consecutive 429s
+        this.consecutive429s = 0;
+    }
+
+    async throttle() {
+        const now = Date.now();
+        
+        // Remove requests older than the window
+        this.requests = this.requests.filter(time => now - time < this.requestWindow);
+        
+        // Calculate effective limits with safety margin
+        const effectiveMaxRequests = Math.floor(this.maxRequests * this.safetyFactor);
+        
+        if (this.requests.length >= effectiveMaxRequests) {
+            // Calculate required wait time
+            const oldestRequest = this.requests[0];
+            const windowEndTime = oldestRequest + this.requestWindow;
+            const baseWaitTime = windowEndTime - now;
+            
+            // Apply exponential backoff if we're getting close to limits
+            const backoffWaitTime = this.currentBackoff * (this.requests.length / effectiveMaxRequests);
+            
+            const waitTime = Math.max(baseWaitTime, backoffWaitTime);
+            
+            if (waitTime > 0) {
+                logger.info(`Rate limit approaching, waiting ${Math.round(waitTime/1000)}s (${this.requests.length}/${effectiveMaxRequests} requests in window)`);
+                await new Promise(resolve => setTimeout(resolve, waitTime));
+                
+                // Increase backoff for next time
+                this.currentBackoff = Math.min(this.currentBackoff * 2, this.maxBackoff);
+            }
+        } else {
+            // Reset backoff if we're well below limits
+            if (this.requests.length < effectiveMaxRequests * 0.5) {
+                this.currentBackoff = this.initialBackoff;
+            }
+        }
+        
+        this.requests.push(now);
+    }
+
+    async handleResponse(response) {
+        // Check for rate limit headers
+        const remaining = response?.headers?.['x-ratelimit-remaining'];
+        const reset = response?.headers?.['x-ratelimit-reset'];
+        
+        if (remaining !== undefined) {
+            logger.info(`Rate limit remaining: ${remaining}, reset: ${reset}`);
+            
+            if (remaining < 100) {
+                // If we're getting low on remaining requests, add artificial delay
+                const delayMs = Math.max(1000, (this.requestWindow / this.maxRequests) * 2);
+                logger.info(`Low on remaining requests (${remaining}), adding ${delayMs}ms delay`);
+                await new Promise(resolve => setTimeout(resolve, delayMs));
+            }
+        }
+        
+        // Handle 429 responses
+        if (response?.status === 429) {
+            this.consecutive429s++;
+            
+            // Get retry-after header or use exponential backoff
+            const retryAfter = response?.headers?.['retry-after'];
+            const waitTime = retryAfter ? 
+                (parseInt(retryAfter) * 1000) : 
+                (Math.min(this.initialBackoff * Math.pow(2, this.consecutive429s), this.maxBackoff));
+            
+            logger.warn(`Rate limit exceeded (429). Waiting ${Math.round(waitTime/1000)}s before retry`);
+            await new Promise(resolve => setTimeout(resolve, waitTime));
+            return true; // Signal that request should be retried
+        }
+        
+        // Reset consecutive 429s on successful response
+        this.consecutive429s = 0;
+        return false; // Signal that request was successful
+    }
+}
+
 class StarterPackProcessor {
     constructor() {
         this.agent = new BskyAgent({ service: 'https://bsky.social' });
@@ -31,6 +126,8 @@ class StarterPackProcessor {
         // Initialize JSON array
         this.jsonStream.write('[\n');
         this.isFirstJsonEntry = true;
+
+        this.rateLimiter = new BlueSkyRateLimiter();
     }
 
     async setupDatabase() {
@@ -84,82 +181,112 @@ class StarterPackProcessor {
     }
 
     async getListMembers(uri) {
-        try {
-            logger.info(`Fetching list members for: ${uri}`);
+        const maxRetries = 3;
+        for (let attempt = 0; attempt < maxRetries; attempt++) {
+            try {
+                await this.rateLimiter.throttle();
+                
+                const response = await this.agent.api.app.bsky.graph.getList({
+                    list: uri,
+                    limit: 100
+                });
+                
+                // Handle rate limits and check if we need to retry
+                const shouldRetry = await this.rateLimiter.handleResponse(response);
+                if (shouldRetry && attempt < maxRetries - 1) {
+                    continue;
+                }
 
-            // The correct API call format based on the Bluesky repo
-            const response = await this.agent.api.app.bsky.graph.getList({
-                list: uri,
-                limit: 100
-            });
+                logger.info(`Raw API response: ${JSON.stringify(response, null, 2)}`);
 
-            logger.info(`Raw API response: ${JSON.stringify(response, null, 2)}`);
+                if (!response?.data?.items) {
+                    logger.error(`No items found in getList response for ${uri}`);
+                    return [];
+                }
 
-            if (!response?.data?.items) {
-                logger.error(`No items found in getList response for ${uri}`);
+                const members = response.data.items;
+                logger.info(`Found ${members.length} members in list`);
+                if (members.length > 0) {
+                    logger.info(`Sample member structure: ${JSON.stringify(members[0], null, 2)}`);
+                }
+                
+                return members;
+            } catch (err) {
+                if (err.status === 429 && attempt < maxRetries - 1) {
+                    // Let the rate limiter handle the 429
+                    const shouldRetry = await this.rateLimiter.handleResponse(err);
+                    if (shouldRetry) continue;
+                }
+                logger.error(`Error getting list members for ${uri}: ${err.message}`);
                 return [];
             }
-
-            const members = response.data.items;
-            logger.info(`Found ${members.length} members in list`);
-            if (members.length > 0) {
-                logger.info(`Sample member structure: ${JSON.stringify(members[0], null, 2)}`);
-            }
-            
-            return members;
-        } catch (err) {
-            logger.error(`Error getting list members for ${uri}: ${err.message}`);
-            if (err.response) {
-                logger.error(`Error response: ${JSON.stringify(err.response.data || err.response, null, 2)}`);
-            }
-            return [];
         }
     }
 
     async getProfile(did) {
-        try {
-            await this.rateLimiter.throttle();
-            logger.info(`Fetching profile for DID: ${did}`);
-            
-            // Use the correct API format for profile fetching
-            const response = await this.agent.api.app.bsky.actor.getProfile({ actor: did });
-            
-            if (response?.data) {
-                logger.info(`Profile found for ${did}: ${response.data.handle}`);
-                return response.data;
-            } else {
-                logger.error(`No profile data returned for ${did}`);
-                return null;
+        const maxRetries = 3;
+        for (let attempt = 0; attempt < maxRetries; attempt++) {
+            try {
+                await this.rateLimiter.throttle();
+                
+                const response = await this.agent.api.app.bsky.actor.getProfile({
+                    actor: did
+                });
+                
+                const shouldRetry = await this.rateLimiter.handleResponse(response);
+                if (shouldRetry && attempt < maxRetries - 1) {
+                    continue;
+                }
+                
+                if (response?.data) {
+                    logger.info(`Profile found for ${did}: ${response.data.handle}`);
+                    return response.data;
+                }
+            } catch (err) {
+                if (err.status === 429 && attempt < maxRetries - 1) {
+                    const shouldRetry = await this.rateLimiter.handleResponse(err);
+                    if (shouldRetry) continue;
+                }
+                logger.error(`Error getting profile for ${did}: ${err.message}`);
             }
-        } catch (err) {
-            logger.error(`Error getting profile for ${did}: ${err.message}`);
-            return null;
         }
+        return null;
     }
 
     async getRecord(uri) {
+        const maxRetries = 3;
         const [repo, collection, rkey] = uri.replace('at://', '').split('/');
-        try {
-            logger.info(`Fetching record: ${uri}`);
-            // Use the correct API format for record fetching
-            const record = await this.agent.api.com.atproto.repo.getRecord({
-                repo,
-                collection,
-                rkey
-            });
-            
-            if (!record?.data?.value) {
-                logger.error(`No value found in record response for ${uri}`);
-                return null;
+        
+        for (let attempt = 0; attempt < maxRetries; attempt++) {
+            try {
+                await this.rateLimiter.throttle();
+                
+                const response = await this.agent.api.com.atproto.repo.getRecord({
+                    repo,
+                    collection,
+                    rkey
+                });
+                
+                const shouldRetry = await this.rateLimiter.handleResponse(response);
+                if (shouldRetry && attempt < maxRetries - 1) {
+                    continue;
+                }
+                
+                if (!response?.data?.value) {
+                    logger.error(`No value found in record response for ${uri}`);
+                    return null;
+                }
+                
+                return response.data;
+            } catch (err) {
+                if (err.status === 429 && attempt < maxRetries - 1) {
+                    const shouldRetry = await this.rateLimiter.handleResponse(err);
+                    if (shouldRetry) continue;
+                }
+                logger.error(`Error getting ${uri}: ${err.message}`);
             }
-            
-            logger.info(`Record structure: ${JSON.stringify(record.data, null, 2)}`);
-            
-            return record.data;
-        } catch (err) {
-            logger.error(`Error getting ${uri}: ${err.message}`);
-            return null;
         }
+        return null;
     }
     
     /**
@@ -173,10 +300,19 @@ class StarterPackProcessor {
         const RETRY_DELAY = 2000; // 2 seconds
 
         try {
+            await this.rateLimiter.throttle();
             const handle = this.sanitizeHandle(rawHandle);
             logger.info(`Attempting to resolve sanitized handle: ${handle}`);
-
+            
             const response = await this.agent.resolveHandle({ handle });
+            
+            // Handle rate limits
+            const shouldRetry = await this.rateLimiter.handleResponse(response);
+            if (shouldRetry && retries < MAX_RETRIES - 1) {
+                logger.info(`Retrying handle resolution for ${rawHandle} (${retries + 2}/${MAX_RETRIES})...`);
+                await this.delay(RETRY_DELAY * (retries + 1)); // Exponential backoff
+                return await this.resolveHandleWithRetry(rawHandle, retries + 1);
+            }
 
             if (response?.data?.did) {
                 return response.data.did;
@@ -184,6 +320,14 @@ class StarterPackProcessor {
                 throw new Error('No DID found in the response.');
             }
         } catch (err) {
+            if (err.status === 429 && retries < MAX_RETRIES - 1) {
+                const shouldRetry = await this.rateLimiter.handleResponse(err);
+                if (shouldRetry) {
+                    logger.info(`Retrying handle resolution for ${rawHandle} (${retries + 2}/${MAX_RETRIES})...`);
+                    await this.delay(RETRY_DELAY * (retries + 1));
+                    return await this.resolveHandleWithRetry(rawHandle, retries + 1);
+                }
+            }
             logger.error(`Error resolving handle ${rawHandle}: ${err.message}`);
             if (retries < MAX_RETRIES - 1) {
                 logger.info(`Retrying handle resolution for ${rawHandle} (${retries + 2}/${MAX_RETRIES})...`);
@@ -196,15 +340,6 @@ class StarterPackProcessor {
         }
     }
 
-    async getProfile(did) {
-        try {
-            const response = await this.agent.getProfile({ actor: did });
-            return response.data;
-        } catch (err) {
-            logger.error(`Error getting profile for ${did}: ${err.message}`);
-            return null;
-        }
-    }
 
     async processStarterPack(urlLine) {
         // Validate and clean the input line
