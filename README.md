@@ -97,6 +97,7 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 
 ### Directories
 - [Bluesky Directory](https://blueskydirectory.com) (tools, apps, users, starter packs)
+- [Starter Pack Explorer](https://starter-pack-explorer-o13o.vercel.app/) (work in progress) [https://github.com/CrispStrobe/starter-pack-explorer](github repo)
 
 ### Discord
 - [Bluesky API Touchers](https://discord.gg/FS9U8A7F) (developers)
