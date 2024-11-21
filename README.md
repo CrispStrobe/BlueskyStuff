@@ -26,6 +26,14 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 - [SwiftSky](https://github.com/rmcan/swiftsky) (Swift-based, early dev)
 - [mattn/bsky](https://github.com/mattn/bsky) (CLI, automation)
 
+### 🔄 Cross-Platform Integration
+
+- [Bridgy Fed](https://fed.brid.gy/) (Fediverse connection: automatic crossposting from/to Mastodon, etc)
+- [Buffer](https://buffer.com) (multi-platform scheduling)
+- [Croissant](https://apps.apple.com/us/app/croissant-cross-posting/id6670288979) (iOS cross-posting)
+- [fedica](https://fedica.com/) (publishing, drafts & scheduling, analytics)
+- [OpenVibe](https://apps.apple.com/us/app/openvibe-mastodon-bluesky/id1666230916) (iOS/Android unified feed reader)
+
 ## 🛠️ Tools & Utilities
 
 ### Directories
@@ -61,14 +69,6 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 - [Repo Cleanup](https://bsky.jazco.dev/stats)
 - [Cleanfollow](https://cleanfollow-bsky.pages.dev/) (remove [inactive](https://mary-ext.codeberg.page/bluesky-quiet-posters/) accounts)
 
-### 🔄 Cross-Platform Integration
-
-- [Bridgy Fed](https://fed.brid.gy/) (Fediverse connection: automatic crossposting from/to Mastodon, etc)
-- [Buffer](https://buffer.com) (multi-platform scheduling)
-- [Croissant](https://apps.apple.com/us/app/croissant-cross-posting/id6670288979) (iOS cross-posting)
-- [fedica](https://fedica.com/) (publishing, drafts & scheduling, analytics)
-- [OpenVibe](https://apps.apple.com/us/app/openvibe-mastodon-bluesky/id1666230916) (iOS/Android unified feed reader)
-
 ## 🔍 Content Discovery & Organization
 
 ### Getting Started
@@ -81,13 +81,11 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
   - Pin favorites to home for quick access
   - [create](https://goodfeeds.co/the-guide) own feeds e.g. in [Skyfeed](https://skyfeed.app/), [blueskyfeedcreator](https://blueskyfeedcreator.com/pricing) (3 free)
 
-### Content Organization
+### Content Organization & Safety
 - [📌 to Bookmark](https://bsky.app/profile/did:plc:q6gjnaw2blty4crticxkmujt/feed/my-pins) - until native Bookmarks are supported, you can reply to a post with 📌 (pin) emoji (which is publicly visible though), and find it this custom feed
-- Limit follows (keep timeline focused)
-- Use lists (broader content access)
-- Pin lists to home (quick switching)
-- News feed strategy (separate feed vs. following)
-
+- create & use [moderation lists](https://mackuba.eu/2024/02/21/bluesky-guide/#safety) & [labelers](https://web.archive.org/web/20240620103516/https://from-over-the-horizon.ghost.io/bluesky-crash-course-labelers/); [find your labels](https://blue.mackuba.eu/scanner/)
+- [Community Safety Guide](https://bsky.app/profile/francesmeh.reviews/post/3lamkrhv6k22o) (blocking, muting, reporting)
+  
 ## 🔐 Security & Setup
 
 ### Account Security
@@ -97,10 +95,6 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 
 ### Custom Domains
 - [Domain Handle Tutorial](https://bsky.social/about/blog/4-28-2023-domain-handle-tutorial) (set your domain as handle)
-- [Namecheap Integration](https://bsky.social/about/blog/7-05-2023-namecheap) (purchase domain via Bluesky)
-
-### Safety
-- create & use [moderation lists](https://mackuba.eu/2024/02/21/bluesky-guide/#safety) & [labelers](https://web.archive.org/web/20240620103516/https://from-over-the-horizon.ghost.io/bluesky-crash-course-labelers/); [find your labels](https://blue.mackuba.eu/scanner/)
-- [Community Safety Guide](https://bsky.app/profile/francesmeh.reviews/post/3lamkrhv6k22o) (blocking, muting, reporting)
+  
 
 > **Disclaimer:** This list is not associated with Bluesky. Originally adapted from [Jeftek.com](https://bsky.app/profile/jeftek.com). Use third-party tools at your own risk. Enable MFA!
