@@ -11,7 +11,7 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 - [TOKIMEKI](https://tokimeki.blue/login) (drafts) - [GitHub](https://github.com/spuithori/tokimekibluesky)
 - [Skeetdeck](https://skeetdeck.pages.dev/) (multi-column, drafts)
 - [Skyline](https://skyline.louisarge.com), [GitHub](https://github.com/louislva/skyline)
-- [flat]((https://flat.sabigara.com/login) - [GitHub](https://github.com/sabigara/flat)
+- [flat](https://flat.sabigara.com/login) - [GitHub](https://github.com/sabigara/flat)
 - [Sunrise](https://sunrise.li)
 - [Klearsky](https://klearsky.pages.dev/) - [GitHub](https://github.com/mimonelu/klearsky)
 - [Kite](https://kite.black) - [GitHub](https://github.com/callmearta/kite)
