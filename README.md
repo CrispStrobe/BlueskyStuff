@@ -7,8 +7,17 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 
 ### Web
 - [Skyfeed](https://skyfeed.app/) (feed management, timeline controls) - [GitHub](https://github.com/skyfeed-dev/app)
-- [Blue Deck](https://deck.blue) (multi-column layout, TweetDeck-style)
-- [TOKIMEKI](https://tokimeki.blue/login) (alternative interface, drafts) - [GitHub](https://github.com/spuithori/tokimekibluesky)
+- [Blue Deck](https://deck.blue) (multi-column, TweetDeck-style)
+- [TOKIMEKI](https://tokimeki.blue/login) (drafts) - [GitHub](https://github.com/spuithori/tokimekibluesky)
+- [Skeetdeck](https://skeetdeck.pages.dev/) (multi-column, drafts)
+- [Skyline](https://skyline.louisarge.com), [GitHub](https://github.com/louislva/skyline)
+- [flat]((https://flat.sabigara.com/login) - [GitHub](https://github.com/sabigara/flat)
+- [Sunrise](https://sunrise.li)
+- [Klearsky](https://klearsky.pages.dev/) - [GitHub](https://github.com/mimonelu/klearsky)
+- [Kite](https://kite.black) - [GitHub](https://github.com/callmearta/kite)
+- [Bsky Wrapper](https://blue.amazingca.dev) - [GitHub](https://github.com/Amazingca/BSKY-Wrapper)
+- [Skylight](https://penpenpng.github.io/skylight) - [GitHub](https://github.com/penpenpng/skylight), [louiscnovel2 fork](https://github.com/louiscnovel2/skylight-bluesky-style)
+- [Redsky](https://redsky.pages.dev/) - [GitHub](https://github.com/akanoren/redsky)
 
 ### Mobile
 
