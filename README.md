@@ -59,6 +59,7 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 - [User Count and growth rate](https://bcounter.nat.vg/)
 - [Charsts](https://bskycharts.edavis.dev/edavis.dev/bskycharts.edavis.dev/index.html)
 - [Stats](https://blue.mackuba.eu/stats/)
+- [Academic Communities](https://ketikagarg.github.io/blueSkyAcademicNetwork/network2.html)
 
 ### Network Tools
 - [Aurora](https://aurora.ndimensional.xyz/) (network visualization)
