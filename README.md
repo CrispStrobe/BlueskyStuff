@@ -49,6 +49,7 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 - [Bluesky Directory](https://blueskydirectory.com) (tools, apps, users, starter packs)
 - [Starter Pack Explorer](https://starter-pack-explorer-o13o.vercel.app/) (work in progress) [github repo](https://github.com/CrispStrobe/starter-pack-explorer)
 - [Search parameters](https://bsky.social/about/blog/05-31-2024-search)
+- [Follow finder](https://bsky-follow-finder.theo.io/) (find people followed by lots of the people you follow)
 
 ### Analytics
 - [Clearsky](https://clearsky.app) (block lists, feed inclusion, history)
