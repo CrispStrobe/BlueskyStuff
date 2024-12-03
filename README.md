@@ -51,7 +51,6 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 - [Search parameters](https://bsky.social/about/blog/05-31-2024-search)
 
 ### Analytics
-- [Blue View](https://blueview.app) (profile analytics, engagement tracking)
 - [Clearsky](https://clearsky.app) (block lists, feed inclusion, history)
 - [Sky Zoo Atmosphere Stats](https://jyc.dev/at) (engagement metrics)
 - [Stats, Repo Explorer, etc](https://bsky.jazco.dev/stats)
