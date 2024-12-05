@@ -4,6 +4,7 @@
 Other collections (some outdated) include: [awesome bluesky](https://github.com/notjuliet/awesome-bluesky)
 
 ## 📱 Client Applications
+- with [skybridge](https://skybridge.fly.dev) you can use any [Mastodon client](https://joinmastodon.org/apps) for Bluesky
 
 ### Web
 - [Skyfeed](https://skyfeed.app/) (feed management, timeline controls) - [GitHub](https://github.com/skyfeed-dev/app)
@@ -42,6 +43,7 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 - [Croissant](https://apps.apple.com/us/app/croissant-cross-posting/id6670288979) (iOS cross-posting)
 - [fedica](https://fedica.com/) (publishing, drafts & scheduling, analytics)
 - [OpenVibe](https://apps.apple.com/us/app/openvibe-mastodon-bluesky/id1666230916) (iOS/Android unified feed reader)
+- [skybridge](https://skybridge.fly.dev) (use any Mastodon client for Bluesky)
 
 ## 🛠️ Tools & Utilities
 
@@ -52,7 +54,7 @@ Other collections (some outdated) include: [awesome bluesky](https://github.com/
 - [Follow finder](https://bsky-follow-finder.theo.io/) (find people followed by lots of the people you follow)
 
 ### Analytics
-- [Clearsky](https://clearsky.app) (block lists, feed inclusion, history)
+- [Clearsky](https://clearsky.app) (block lists & starterpacks, feed inclusion, history)
 - [Sky Zoo Atmosphere Stats](https://jyc.dev/at) (engagement metrics)
 - [Stats, Repo Explorer, etc](https://bsky.jazco.dev/stats)
 - [User Count](https://bsky-users.theo.io/) (platform statistics)
